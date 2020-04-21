@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\DB;
 
 class MahasiswaController extends Controller
 {
+    
+    public function __construct() {
+        $this->middLeware('auth');
+    }
     public function index() {
         //memanggil data dari tabel mahasiswa
         $mahasiswa = DB::table('mahasiswa')->get();
