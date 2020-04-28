@@ -1,37 +1,34 @@
 @extends('master')
 
-<!-- Isi title -->
-@section('title', 'Edit Data')
+@section('title','Edit Data')
 
-<!-- Isi bagian judul halaman -->
-@section('judul_halaman', 'Edit Data Mahasiswa')
+@section('judul_halaman','Edit Data Mahasiswa')
 
-<!-- Isi bagian konten -->
 @section('konten')
-    <a href="/mahasiswa" class="btn btn-danger">Kembali</a>
-    <br/>
-    <br/>
+    <a href="/" class="btn btn-danger">Kembali</a>
+    <br>
+    <br>
     @foreach($mahasiswa as $mhs)
-    <form action="/mahasiswa/update" method="post">
+    <form action="/mahasiswa/update" method="POST">
         {{ csrf_field() }}
-        <input type="hidden" name="id" value="{{$mhs->id}}"> <br/>
-        <div class="form-group">
-            <label for="namamhs">Nama</label>
-            <input type="text" class="form-control" required="required" name="namamhs"> <br/>
-        </div>
-        <div class="form-group">
-            <label for="nimmhs">NIM</label>
-            <input type="number" class="form-control" required="required" name="nimmhs"> <br/>
-        </div>
-        <div class="form-group">
-            <label for="emailmhs">Email</label>
-            <input type="email" class="form-control" required="required" name="emailmhs"> <br/>
-        </div>
-        <div class="form-group">
-            <label for="jurusanmhs">Jurusan</label>
-            <input type="text" class="form-control" required="required" name="jurusanmhs"> <br/>
-        </div>
-        <button type="submit" name="edit" class="btn btn-primary float-right">Simpan Data</button>
-        </form>
-        @endforeach
+        <input type="hidden" name="id" value="{{ $mhs->id }}">
+            <div class="form-group">
+            <label>Nama</label>
+            <input type="text" class="form-control" value="{{ $mhs->nama }}" required="required" name="namamhs"><br>
+             </div>
+            <div class="form-group">
+            <label>NIM</label>
+            <input type="number" class="form-control" value="{{ $mhs->nim }}" required="required" name="nimmhs"><br>
+            </div>
+            <div class="form-group">
+            <label>Email</label>
+            <input type="email" class="form-control" value="{{ $mhs->email }}" required="required" name="emailmhs"><br>
+            </div>
+            <div class="form-group">
+            <label>Jurusan</label>
+            <input type="text" class="form-control" value="{{ $mhs->jurusan }}" required="required" name="jurusanmhs"><br>
+            </div>
+    <input type="submit" class="btn btn-primary float-right" value="Update Data">
+    </form>
+    @endforeach
 @endsection
